@@ -34,12 +34,15 @@ const CSVInput = (props) => {
     const arrayHelper = (arrayData) => {
         let arrayElements = []
         arrayData.data.forEach(element => {
+            console.log(element)
             if (element != '')
-                arrayElements.push(element)
+                arrayElements.push(element[0])
         });
         console.log(arrayElements)
         // return arrayElements
-        setData(arrayElements)
+        // setData(arrayElements)
+        props.setAddressArray(arrayElements)
+        props.mintNFTs()
     }
 
     const { CSVReader } = useCSVReader();
@@ -62,7 +65,7 @@ const CSVInput = (props) => {
                     <>
                         <div style={styles.csvReader}>
                             <button type='button' {...getRootProps()} style={styles.browseFile}>
-                                Browse file
+                                File
                             </button>
                             <div style={styles.acceptedFile}>
                                 {acceptedFile && acceptedFile.name}
