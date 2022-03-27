@@ -21,90 +21,90 @@ const Home = (props) => {
     let NFTContract;
 
 
-const styles = {
-    csvReader: {
-        display: 'flex',
-        flexDirection: 'row',
-        marginBottom: 10,
-    },
-    browseFile: {
-        width: '20%',
-    },
-    acceptedFile: {
-        border: '1px solid #ccc',
-        height: 45,
-        lineHeight: 2.5,
-        paddingLeft: 10,
-        width: '80%',
-    },
-    remove: {
-        borderRadius: 0,
-        padding: '0 20px',
-    },
-    progressBarBackgroundColor: {
-        backgroundColor: 'green',
-    },
-};
+    const styles = {
+        csvReader: {
+            display: 'flex',
+            flexDirection: 'row',
+            marginBottom: 10,
+        },
+        browseFile: {
+            width: '20%',
+        },
+        acceptedFile: {
+            border: '1px solid #ccc',
+            height: 45,
+            lineHeight: 2.5,
+            paddingLeft: 10,
+            width: '80%',
+        },
+        remove: {
+            borderRadius: 0,
+            padding: '0 20px',
+        },
+        progressBarBackgroundColor: {
+            backgroundColor: 'green',
+        },
+    };
 
-const CSVInput = () => {
-    // State varibale for csv data
-    const [data, setData] = useState([]);
+    const CSVInput = () => {
+        // State varibale for csv data
+        const [data, setData] = useState([]);
 
-    // Helper function to convert csv data to array
-    const arrayHelper = (arrayData) => {
-        let arrayElements = []
-        arrayData.data.forEach(element => {
-            console.log(element)
-            if (element != '')
-                arrayElements.push(element[0])
-        });
-        console.log(arrayElements)
-        // return arrayElements
-        // setData(arrayElements)
-        // setAddressArray(arrayElements)
+        // Helper function to convert csv data to array
+        const arrayHelper = (arrayData) => {
+            let arrayElements = []
+            arrayData.data.forEach(element => {
+                console.log(element)
+                if (element != '')
+                    arrayElements.push(element[0])
+            });
+            console.log(arrayElements)
+            // return arrayElements
+            // setData(arrayElements)
+            // setAddressArray(arrayElements)
 
-        mintNFTs(arrayElements)
-    }
+            mintNFTs(arrayElements)
+        }
 
-    const { CSVReader } = useCSVReader();
-    return (
-        <>
-            <CSVReader
-                onUploadAccepted={(results) => {
-                    console.log('--------    CSV FILE  -------------------');
-                    setData(arrayHelper(results))
-                    console.log('----------  ARRAY  -----------------');
+        const { CSVReader } = useCSVReader();
+        return (
+            <>
+                <CSVReader
+                    onUploadAccepted={(results) => {
+                        console.log('--------    CSV FILE  -------------------');
+                        setData(arrayHelper(results))
+                        console.log('----------  ARRAY  -----------------');
 
-                }}
-            >
-                {({
-                    getRootProps,
-                    acceptedFile,
-                    ProgressBar,
-                    getRemoveFileProps,
-                }) => (
-                    <>
-                        <div style={styles.csvReader}>
-                            <button type='button' {...getRootProps()} style={styles.browseFile}>
-                                File
-                            </button>
-                            <div style={styles.acceptedFile}>
-                                {acceptedFile && acceptedFile.name}
+                    }}
+                >
+                    {({
+                        getRootProps,
+                        acceptedFile,
+                        ProgressBar,
+                        getRemoveFileProps,
+                    }) => (
+                        <>
+                            <div style={styles.csvReader}>
+                                <button type='button' {...getRootProps()} style={styles.browseFile}>
+                                    File
+                                </button>
+                                <div style={styles.acceptedFile}>
+                                    {acceptedFile && acceptedFile.name}
+                                </div>
+                                <button {...getRemoveFileProps()} style={styles.remove}>
+                                    Remove
+                                </button>
                             </div>
-                            <button {...getRemoveFileProps()} style={styles.remove}>
-                                Remove
-                            </button>
-                        </div>
-                        <ProgressBar style={styles.progressBarBackgroundColor} />
-                    </>
-                )}
-            </CSVReader>
+                            <ProgressBar style={styles.progressBarBackgroundColor} />
+                        </>
+                    )}
+                </CSVReader>
 
-        </>
-    );
+            </>
+        );
 
 
-}
+    }
 
     const checkIfWalletIsConnected = async () => {
         /*
@@ -220,7 +220,7 @@ const CSVInput = () => {
         }
     }
 
-    const mintNFTs = async(addresses) => {
+    const mintNFTs = async (addresses) => {
         console.log("Calliing mint nft")
         console.log(addresses)
         const contract = await getUserContract()
@@ -245,18 +245,18 @@ const CSVInput = () => {
     return (
      
         <div className="container">
-            <div className="container">
-                <h1>Welcome to NFT for all</h1>
+            <div className="container" style={{width:"50%", padding: "2%",paddingInline: "37%"}}>
+                <h1>Welcome to <span style={{color:"green"}}>NFT For All</span></h1>
             </div>
-            <div className="container">
+            <div className="container" style={{width:"25%", padding: "2%",paddingInline: "37%"}}>
                 {address && address.length == 0 ? (<button onClick={() => {
                     connectWalletAction()
                 }}>Connect Wallet</button>) : (<p>{address}</p>)}
 
                 <br />
             </div>
-            <div className="container">
-                <form>
+            <div className="container" style={{width:"50%", padding: "2%",paddingInline: "45%"}}>
+                <form >
                     <div>
                         <p>Enter Your NFT Name</p>
                         <input type="text" onChange={(e) => { setNFTName(e.target.value); }} />
@@ -271,7 +271,7 @@ const CSVInput = () => {
                     </div>
                     <br />
                     <div>
-                        <button onClick={(e) => {
+                        <button style={{paddingInline: "3.5%",}} onClick={(e) => {
                             e.preventDefault();
                             deployNFTBathTransferContract();
                         }}>Deploy Contract</button>
@@ -279,12 +279,12 @@ const CSVInput = () => {
                 </form>
             </div>
             <div className="container">
-                <div className="item"><h3>Upload Your CSV file with addreses</h3></div>
+                <div className="item"><h3>Upload your CSV file with addresses to bulk mint</h3></div>
                 <div className="container"><CSVInput mintNFTs={mintNFTs} addressArray={addressArray} setAddressArray={setAddressArray} /></div>
 
             </div>
 
-        </div>
+        </div >
     )
 }
 

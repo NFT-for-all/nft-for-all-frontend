@@ -1,16 +1,17 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: rgb(109, 109, 233);
+  /* background-color: rgb(109, 109, 233); */
+  background-image: url("./light.png");
 }
 .container{
   display: grid;
   gap:20px;
-  background-color: rgb(102, 255, 102);
+  /* background-color: rgb(102, 255, 102); */
 }
 
 .item{
- background-color: red;
+ /* background-color: red; */
  display: grid;
  place-items: center;
 }
