@@ -248,39 +248,40 @@ const Home = (props) => {
             <div className="container" style={{width:"50%", padding: "2%",paddingInline: "37%"}}>
                 <h1>Welcome to <span style={{color:"green"}}>NFT For All</span></h1>
             </div>
-            <div className="container" style={{width:"25%", padding: "2%",paddingInline: "37%"}}>
-                {address && address.length == 0 ? (<button onClick={() => {
+            <div className="container" style={{width:"25%", padding: "2%",paddingInline: "37%", marginTop:"-5%"}}>
+                {address && address.length == 0 ? (<button style={{padding:"5%", borderRadius:"15px", borderWidth:"0px", background: "linear-gradient(to bottom, #ccffff 0%, #ffffff 100%)"}}onClick={() => {
                     connectWalletAction()
                 }}>Connect Wallet</button>) : (<p>{address}</p>)}
 
                 <br />
             </div>
-            <div className="container" style={{width:"50%", padding: "2%",paddingInline: "45%"}}>
+            <div className="container" style={{width:"50%", padding: "2%",paddingInline: "42%", marginTop:"-6%"}}>
                 <form >
+                <h1 style={{marginLeft:"-5%"}}>Fill Your NFT Details</h1>
                     <div>
                         <p>Enter Your NFT Name</p>
-                        <input type="text" onChange={(e) => { setNFTName(e.target.value); }} />
+                        <input style={{paddingBottom:"2%",paddingLeft:"15%", paddingTop:"8px", paddingRight:"-14%", borderRadius:"7px", borderWidth:"1px", background:"linear-gradient(to bottom, #ccffff 0%, #ffccff 100%)"}} type="text" onChange={(e) => { setNFTName(e.target.value); }} />
                     </div>
                     <div>
                         <p>Enter Your NFT Symbol</p>
-                        <input type="text" onChange={(e) => { setNFTSymbol(e.target.value); }} />
+                        <input style={{paddingBottom:"2%",paddingLeft:"15%", paddingTop:"8px", paddingRight:"-14%", borderRadius:"7px", borderWidth:"1px", background:"linear-gradient(to bottom, #ccffff 0%, #ffccff 100%)"}} type="text" onChange={(e) => { setNFTSymbol(e.target.value); }} />
                     </div>
                     <div>
                         <p>Enter Your NFT Token URI</p>
-                        <input type="text" onChange={(e) => { setNFTUri(e.target.value); }} />
+                        <input style={{paddingBottom:"2%",paddingLeft:"15%", paddingTop:"8px", paddingRight:"-14%", borderRadius:"7px", borderWidth:"1px", background:"linear-gradient(to bottom, #ccffff 0%, #ffccff 100%)"}} type="text" onChange={(e) => { setNFTUri(e.target.value); }} />
                     </div>
                     <br />
                     <div>
-                        <button style={{paddingInline: "3.5%",}} onClick={(e) => {
+                        <button style={{padding:"2%", borderRadius:"12px", marginLeft:"8%", borderWidth:"0px", background: "linear-gradient(to bottom, #ccffff 0%, #ffffff 100%)"}} onClick={(e) => {
                             e.preventDefault();
                             deployNFTBathTransferContract();
                         }}>Deploy Contract</button>
                     </div>
                 </form>
             </div>
-            <div className="container">
+            <div className="container" style={{marginTop:"-2%"}}>
                 <div className="item"><h3>Upload your CSV file with addresses to bulk mint</h3></div>
-                <div className="container"><CSVInput mintNFTs={mintNFTs} addressArray={addressArray} setAddressArray={setAddressArray} /></div>
+                <div className="container" style={{width:"50%", marginLeft:"25%"}}><CSVInput mintNFTs={mintNFTs} addressArray={addressArray} setAddressArray={setAddressArray} /></div>
 
             </div>
 
