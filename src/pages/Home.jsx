@@ -251,11 +251,11 @@ const Home = (props) => {
             <div className="container" style={{width:"25%", padding: "2%",paddingInline: "37%", marginTop:"-5%"}}>
                 {address && address.length == 0 ? (<button style={{padding:"5%", borderRadius:"15px", borderWidth:"0px", background: "linear-gradient(to bottom, #ccffff 0%, #ffffff 100%)"}}onClick={() => {
                     connectWalletAction()
-                }}>Connect Wallet</button>) : (<p>{address}</p>)}
+                }}>Connect Wallet</button>) : (<p style={{fontSize:"20px",color:"black", fontWeight:"bold"}}>{address}</p>)}
 
                 <br />
             </div>
-            <div className="container" style={{width:"50%", padding: "2%",paddingInline: "42%", marginTop:"-6%"}}>
+            <div className="container" style={{width:"50%", padding: "2%",paddingInline: "42%", marginTop:"-9%"}}>
                 <form >
                 <h1 style={{marginLeft:"-5%"}}>Fill Your NFT Details</h1>
                     <div>
